@@ -70,26 +70,26 @@ public class MinHeap
                 int index = 0;
                 while (HasLeftChild(index))
                 {
-                    var smallerIndex = GetLeftChildIndex(index);
-                    if (HasRightChild(index) && GetRightChild(index) < GetLeftChild(index))
+                    var biggerIndex = GetLeftChildIndex(index);
+                    if (HasRightChild(index) && GetRightChild(index) > GetLeftChild(index))
                     {
-                        smallerIndex = GetRightChildIndex(index);
+                        biggerIndex = GetRightChildIndex(index);
                     }
 
-                    if (_elements[smallerIndex] >= _elements[index])
+                    if (_elements[biggerIndex] < _elements[index])
                     {
                         break;
                     }
 
-                    Swap(smallerIndex, index);
-                    index = smallerIndex;
+                    Swap(biggerIndex, index);
+                    index = biggerIndex;
                 }
             }
 
             private void ReCalculateUp()
             {
                 var index = _size - 1;
-                while (!IsRoot(index) && _elements[index] < GetParent(index))
+                while (!IsRoot(index) && _elements[index] > GetParent(index))
                 {
                     var parentIndex = GetParentIndex(index);
                     Swap(parentIndex, index);

@@ -1,4 +1,4 @@
-public class MinHeap
+public class MaxHeap
         {
             private readonly int[] _elements;
             private int _size;
